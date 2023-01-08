@@ -3,7 +3,7 @@ const router = require("express").Router();
 router
   .route("/movie")
   .get((req, res, next) => {
-    res.send("get route")
+    res.send("You will get some details about movies")
   })
   .post((req, res, next) => {
     res.send("post route")
