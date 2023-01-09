@@ -1,21 +1,24 @@
+const { getAll, getOne } = require("../controllers/movieController");
+
 const router = require("express").Router();
 
 router
   .route("/movie")
-  .get((req, res, next) => {
-    res.send("You will get some details about movies")
-  })
+  .get(getAll)
   .post((req, res, next) => {
-    res.send("post route")
+    res.send("post route");
   })
   .put((req, res, next) => {
-    res.send("put route")
+    res.send("put route");
   })
   .patch((req, res, next) => {
-    res.send("patch route")
+    res.send("patch route");
   })
   .delete((req, res, next) => {
-    res.send("delete route")
+    res.send("delete route");
   });
+
+router.route("/movie/:id")
+  .get(getOne)
 
 module.exports = router;
