@@ -4,6 +4,7 @@ const app = express();
 const cors = require("cors")
 
 app.use(cors())
+app.use(express.static("public"))
 
 app.use(express.json())
 const connectDB = require("./helpers/mongo_init");
@@ -13,14 +14,8 @@ connectDB();
 
 app.use("/api/", require("./routes/movieRoute"));
 app.get("/",(req,res)=>{
-    res.write(`
-    <h1>Try these endpoints </h1>
-    <h3>To get all the movies</h3>
-    <code style="border:1px solid black;padding:5px">https://repulsive-sun-hat-fox.cyclic.app/api/movie</code>
-    <h3>To get a movie by id</h3>
-    <code style="border:1px solid black;padding:5px">https://repulsive-sun-hat-fox.cyclic.app/api/movie/63bbd844fcd3432ff57afd80</code>
-    `)
-    res.send()
+
+ res.sendFile(__dirname + '/index.html')
     
 })
 
